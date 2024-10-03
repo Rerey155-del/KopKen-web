@@ -5,13 +5,13 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   // State untuk menyimpan username jika pengguna sudah login
-  const [username, setUsername] = useState("");
+  const [pengguna, setPengguna] = useState("");
 
   // Mengambil username dari localStorage jika sudah login (saat komponen pertama kali di-mount)
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
-      setUsername(storedUsername); // Menyimpan username ke state
+      setPengguna(storedUsername); // Menyimpan username ke state
     }
   }, []); // Hanya berjalan sekali saat komponen pertama kali di-render
 
@@ -33,19 +33,19 @@ const Navbar = () => {
 
   // Fungsi untuk logout dan menghapus username dari localStorage
   const handleLogout = () => {
-    localStorage.removeItem("username"); // Menghapus username dari localStorage
-    setUsername(""); // Reset state username ke string kosong
-  }
+    localStorage.removeItem("pengguna"); // Menghapus username dari localStorage
+    setPengguna(""); // Reset state username ke string kosong
+  };
 
   return (
     <nav
       className={`p-4 fixed top-0 left-0 w-full transition-all duration-300 ${
-        isScrolled ? 'bg-blur' : 'bg-navbar'
+        isScrolled ? "bg-blur" : "bg-navbar"
       }`}
       style={{
         backdropFilter: isScrolled ? "blur(5px)" : "none", // Jika di-scroll, tambahkan efek blur
-        position: 'fixed', // Navbar akan selalu tetap di atas
-        width: '100%', // Lebar penuh
+        position: "fixed", // Navbar akan selalu tetap di atas
+        width: "100%", // Lebar penuh
         top: 0, // Tetap di bagian atas layar
         zIndex: 1, // Z-index lebih tinggi untuk memastikan navbar berada di depan elemen lain
       }}
@@ -54,36 +54,65 @@ const Navbar = () => {
         {/* Menu navigasi sebelah kiri */}
         <ul className="flex space-x-4">
           <li>
-            <a href="#" className="text-300 hover:text-red font-bold text-merah">Home</a>
+            <a
+              href="#"
+              className="text-300 hover:text-red font-bold text-merah"
+            >
+              Home
+            </a>
           </li>
           <li>
-            <a href="#" className="text-300 hover:text-red font-bold" style={{ color: "#2D2D2D" }}>Product</a>
+            <a
+              href="#"
+              className="text-300 hover:text-red font-bold"
+              style={{ color: "#2D2D2D" }}
+            >
+              Product
+            </a>
           </li>
           <li>
-            <a href="#" className="text-300 hover:text-red font-bold" style={{ color: "#2D2D2D" }}>About</a>
+            <a
+              href="#"
+              className="text-300 hover:text-red font-bold"
+              style={{ color: "#2D2D2D" }}
+            >
+              About
+            </a>
           </li>
           <li>
-            <a href="#" className="text-300 hover:text-red font-bold" style={{ color: "#2D2D2D" }}>Mobile Apps</a>
+            <a
+              href="#"
+              className="text-300 hover:text-red font-bold"
+              style={{ color: "#2D2D2D" }}
+            >
+              Mobile Apps
+            </a>
           </li>
         </ul>
 
         {/* Bagian kanan navbar: jika user sudah login, tampilkan username dan tombol logout (CONDITIONAL RENDERING DENGAN TERNARY OPERATOR */}
-        {username ? (
+        {pengguna ? (
           <div className="flex items-center space-x-2">
-            {/* Menampilkan nama pengguna yang login */}
-            <p className="text-300 font-bold text-abu2 mr-10" style={{fontSize : "16px"}}>
-              Hello, {username} {/* Tampilkan username */}
+            <p
+              className="text-300 font-bold text-abu2 mr-10"
+              style={{ fontSize: "16px" }}
+            >
+              Hello, {pengguna}
             </p>
-            
-            {/* Tombol logout */}
-            <button onClick={handleLogout} className="text-300 font-bold text-abu2">
+            <button
+              onClick={handleLogout}
+              className="text-300 font-bold text-abu2"
+            >
               Logout
             </button>
           </div>
         ) : (
           <div>
-            {/* Jika tidak login, tampilkan tombol login */}
-            <a href="/login" className="text-300 hover:text-red font-bold" style={{ color: "#2D2D2D" }}>
+            <a
+              href="/login"
+              className="text-300 hover:text-red font-bold"
+              style={{ color: "#2D2D2D" }}
+            >
               Login
             </a>
           </div>
