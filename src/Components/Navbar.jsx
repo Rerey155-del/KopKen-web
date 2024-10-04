@@ -25,7 +25,7 @@ const Navbar = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
-    // Membersihkan event listener ketika komponen di-unmount
+    // Membersihkan event listener ketika komponen di-unmount (OPSIONAL)
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
