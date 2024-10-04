@@ -15,13 +15,13 @@ const Navbar = () => {
     }
   }, []); // Hanya berjalan sekali saat komponen pertama kali di-render
 
-  // Fungsi untuk memeriksa apakah pengguna sudah melakukan scroll
+  // Fungsi untuk memeriksa apakah pengguna sudah melakukan scroll (OPSIONAL)
   const handleScroll = () => {
     const scrollY = window.scrollY; // Mengambil posisi scroll Y dari jendela
     setIsScrolled(scrollY > 0); // Jika scroll lebih dari 0, set `isScrolled` ke `true`
   };
 
-  // Menambahkan event listener untuk mendeteksi scroll
+  // Menambahkan event listener untuk mendeteksi scroll (OPSIONAL)
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
