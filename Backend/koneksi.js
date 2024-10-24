@@ -1,34 +1,45 @@
-import express from "express"
+import express from "express";
 import { MongoClient } from "mongodb";
-import dotenv from "dotenv" // Load environment variables
+import dotenv from "dotenv"; // Load environment variables
 import cors from "cors";
 
-// LOAD ENVIRONTMENT VARIABLE
+// LOAD ENVIRONMENT VARIABLES
 dotenv.config();
 
 const app = express();
 app.use(cors());
-app.use(express.json()) //parsing request body sebagai JSON
+app.use(express.json()); // Parsing request body sebagai JSON
+
+// Middleware untuk menyajikan gambar dari disk
+// app.use("/assets", express.static("E:\Backend\Kopken\kopken\src\assets"));
+app.use("/assets", express.static("E:/Backend/Kopken/kopken/src/assets"));  // Atur untuk menyajikan gambar dari folder D:/images
 
 const port = process.env.PORT;
 const url = process.env.MONGODB;
-const namaDatabase = process.env.DB_NAMA;
-const namaKoleksi = process.env.NAMA_KOLEKSI;
+const namaDatabase = process.env.kopken;
+const namaKoleksiUser = process.env.user; // Koleksi untuk user
+const namaKoleksiProduct = process.env.product; // Koleksi untuk product
 
-let collection;
+let client;
+let userCollection;
+let productCollection;
 
-// middleware untuk memastikan koneksi ko mongodb
+// Middleware untuk memastikan koneksi ke MongoDB
 const mongoConnectionMiddleware = async (req, res, next) => {
   try {
-    if (!collection) {
-      const client = new MongoClient(url);
+    if (!client) {
+      client = new MongoClient(url);
       await client.connect();
-      collection = client.db(namaDatabase).collection(namaKoleksi);
       console.log("Koneksi ke MongoDB berhasil");
+
+      // Ambil database dan koleksi untuk user dan product
+      const db = client.db(namaDatabase);
+      userCollection = db.collection(namaKoleksiUser); // Koleksi user
+      productCollection = db.collection(namaKoleksiProduct); // Koleksi product
     }
     next(); // Lanjutkan ke endpoint berikutnya
-  } catch {
-    console.log("Koneksi ke MongoDB gagal");
+  } catch (error) {
+    console.log("Koneksi ke MongoDB gagal", error);
     res.status(500).json({ message: "terjadi kesalahan koneksi ke database" });
   }
 };
@@ -36,23 +47,46 @@ const mongoConnectionMiddleware = async (req, res, next) => {
 // Gunakan middleware pada semua route
 app.use(mongoConnectionMiddleware);
 
+// Endpoint untuk mendapatkan data dari koleksi "user"
 app.get("/user", async (req, res) => {
   try {
-    const data = await collection.find().toArray();
+    const data = await userCollection.find().toArray();
     res.json(data);
   } catch {
     res.status(500).json({ message: "terjadi kesalahan" });
   }
 });
 
-app.post("/user", async(req, res)=> {
-  try{
-    const data = await collection.insertOne(req.body);
-  } catch {
+// Endpoint untuk mendapatkan data dari koleksi "product"
+app.get("/product", async (req, res) => {
+  try {
+    const data = await productCollection.find().toArray(); // Gunakan koleksi "product"
+    res.json(data);
+  } catch (error) {
     res.status(500).json({ message: "terjadi kesalahan" });
   }
-})
+});
+
+// Endpoint POST untuk menambahkan data ke koleksi "user"
+app.post("/user", async (req, res) => {
+  try {
+    const result = await userCollection.insertOne(req.body);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: "terjadi kesalahan" });
+  }
+});
+
+// Endpoint POST untuk menampilkan data ke koleksi "product"
+app.get("/product", async (req, res) => {
+  try {
+    const result = await productCollection.insertOne(req.body);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: "terjadi kesalahan" });
+  }
+});
 
 app.listen(port, () => {
-  console.log(`Server berjalan di http://localhost:3000/user`);
+  console.log(`Server berjalan di http://localhost:${port}`);
 });

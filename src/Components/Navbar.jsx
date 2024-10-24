@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   // State untuk mendeteksi apakah navbar sudah di-scroll
@@ -6,6 +7,11 @@ const Navbar = () => {
 
   // State untuk menyimpan username jika pengguna sudah login
   const [pengguna, setPengguna] = useState("");
+
+  const navigate = useNavigate();
+  const pindahHalaman = () => {
+    navigate("/menu");
+  };
 
   // Mengambil username dari localStorage jika sudah login (saat komponen pertama kali di-mount)
   useEffect(() => {
@@ -33,7 +39,7 @@ const Navbar = () => {
 
   // Fungsi untuk logout dan menghapus username dari localStorage
   const handleLogout = () => {
-    localStorage.removeItem("pengguna"); // Menghapus username dari localStorage
+    localStorage.removeItem("username"); // Menghapus username dari localStorage
     setPengguna(""); // Reset state username ke string kosong
   };
 
@@ -54,18 +60,16 @@ const Navbar = () => {
         {/* Menu navigasi sebelah kiri */}
         <ul className="flex space-x-4">
           <li>
-            <a
-              href="#"
-              className="text-300 hover:text-red font-bold text-merah"
-            >
+            <a href="#" className="text-300 font-bold text-merah">
               Home
             </a>
           </li>
           <li>
             <a
               href="#"
-              className="text-300 hover:text-red font-bold"
+              className="text-300 font-bold"
               style={{ color: "#2D2D2D" }}
+              onClick={pindahHalaman}
             >
               Product
             </a>
@@ -73,7 +77,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="text-300 hover:text-red font-bold"
+              className="text-300 font-bold"
               style={{ color: "#2D2D2D" }}
             >
               About
@@ -82,7 +86,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="text-300 hover:text-red font-bold"
+              className="text-300 font-bold"
               style={{ color: "#2D2D2D" }}
             >
               Mobile Apps
@@ -110,7 +114,7 @@ const Navbar = () => {
           <div>
             <a
               href="/login"
-              className="text-300 hover:text-red font-bold"
+              className="text-300 font-bold"
               style={{ color: "#2D2D2D" }}
             >
               Login

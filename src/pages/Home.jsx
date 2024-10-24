@@ -19,6 +19,8 @@ import ESPRESSO from "../assets/ESPRESSO.png";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Impor CSS AOS
 import Footer from "../Components/Footer";
+import ArrowForward from "../assets/arrow_forward.svg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [showText, setShowText] = useState(false);
@@ -27,13 +29,10 @@ const Home = () => {
     setShowText(!showText);
   };
 
-  // Inisialisasi AOS di useEffect
-  // useEffect(() => {
-  //   AOS.init({
-  //     duration: 1000, // Durasi animasi
-  //     once: true, // Animasi hanya berjalan sekali
-  //   });
-  // }, []);
+  const navigate = useNavigate();
+  const pindahHalaman = () => {
+    navigate("/menu");
+  };
 
   useEffect(() => {
     AOS.init({
@@ -53,7 +52,7 @@ const Home = () => {
         overflowX: "hidden",
         fontFamily: "Josefin Sans, sans-serif",
       }}
-      className="overflow-y-auto"
+      className="overflow-y-auto text-black"
     >
       <Navbar />
       <div className="px-20 mt-28">
@@ -205,13 +204,19 @@ const Home = () => {
         </div>
       </div>
       {/* ========== CAROUSEL ============= */}
-
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
         className="px-20 "
         style={{ marginTop: "20rem" }}
       >
+        <button
+          className="p-2 px-8 bg-merah text-white  rounded-full mb-6 flex items-center space-x-2"
+          onClick={pindahHalaman}
+        >
+          shop
+          <img src={ArrowForward} />
+        </button>
         <div
           id="controls-carousel"
           className="relative w-full bg-merah rounded-3xl"
@@ -260,13 +265,16 @@ const Home = () => {
                 Lorem ipsum dolor sit amet consectetur. Eu pellentesque nec
                 tortor diam lorem. Enim erat eu mattis mollis ornare.
               </p>
-
+              <button className="p-2 bg-abu2 text-white ml-[10rem] rounded-lg mt-[2rem]">
+                masukkan ke keranjang
+              </button>
               <p
                 className="text-white text-sm"
                 style={{
                   wordWrap: "break-word",
                   width: "20em",
                   marginLeft: "46rem",
+                  marginTop: "-5rem",
                 }}
               >
                 Lorem ipsum dolor sit amet consectetur. Quis vitae elementum
@@ -322,13 +330,16 @@ const Home = () => {
                 Lorem ipsum dolor sit amet consectetur. Eu pellentesque nec
                 tortor diam lorem. Enim erat eu mattis mollis ornare.
               </p>
-
+              <button className="p-2 bg-abu2 text-white ml-[10rem] rounded-lg mt-6">
+                masukkan ke keranjang
+              </button>
               <p
                 className="text-white text-sm"
                 style={{
                   wordWrap: "break-word",
                   width: "20em",
                   marginLeft: "46rem",
+                  marginTop: "-4rem",
                 }}
               >
                 Lorem ipsum dolor sit amet consectetur. Quis vitae elementum
@@ -380,13 +391,17 @@ const Home = () => {
                 Lorem ipsum dolor sit amet consectetur. Eu pellentesque nec
                 tortor diam lorem. Enim erat eu mattis mollis ornare.
               </p>
-
+              <br />
+              <button className="p-2 bg-abu2 text-white ml-[10rem] rounded-lg">
+                masukkan ke keranjang
+              </button>
               <p
                 className="text-white text-sm"
                 style={{
                   wordWrap: "break-word",
                   width: "20em",
                   marginLeft: "46rem",
+                  marginTop: "-4rem",
                 }}
               >
                 Lorem ipsum dolor sit amet consectetur. Quis vitae elementum
@@ -394,6 +409,7 @@ const Home = () => {
                 Hendrerit quam in vel nullam mi. Amet montes tellus amet elit
                 placerat ut est mi. Diam fermentum nullam id risus.
               </p>
+
               <img
                 src={outside}
                 className="absolute block object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
@@ -453,7 +469,6 @@ const Home = () => {
           </button>
         </div>
       </div>
-
       {/* ====== MAIN SECTION =========== */}
       <div
         data-aos="fade-up"
@@ -496,45 +511,42 @@ const Home = () => {
         />
       </div>
       <div className="mb-20">
-      <div data-aos="fade-up" className="flex justify-center">
-        <img src={halal}></img>
-        <img src={mui}></img>
-        <img src={ESPRESSO}></img>
-      </div>
-      <div data-aos="fade-up" className="flex justify-around w-full px-10">
-        <p className="text-3xl ">HALAL CERTIFICATION</p>
-        <p className="text-3xl text-center mr-16">
-          WORLD BEST BRAND
-          <br />
-          WINNER 2020
-        </p>
-        <p className="text-3xl">COFFEE JOURNEY</p>
-      </div>
-      <div data-aos="fade-up" className="grid grid-cols-3 gap-16 px-16 mt-5">
-        <p className="text-sm text-center">
-          Grab-and-go coffee chain Kopi Kenangan strengthens its commitment to
-          serve the best quality product and become the first Kopi Susu Kekinian
-          to obtain Halal Certification from Majelis Ulama Indonesia.
-        </p>
-        <p className="text-sm text-center">
-          Kopi Kenangan has been appointed as the only Brand of The Year winner
-          in the Café Chain category from Indonesia by The World Branding
-          Awards.
-        </p>
-        <p className="text-sm text-center">
-          At Kopi Kenangan, we make sure you have the best coffee experience. We
-          work relentlessly to guarantee we deliver on our promise. From
-          harvest, tasting, roasting, and working together with the producers in
-          Indonesia to produce the best crop for our customers.
-        </p>
+        <div data-aos="fade-up" className="flex justify-center">
+          <img src={halal}></img>
+          <img src={mui}></img>
+          <img src={ESPRESSO}></img>
+        </div>
+        <div data-aos="fade-up" className="flex justify-around w-full px-10">
+          <p className="text-3xl ">HALAL CERTIFICATION</p>
+          <p className="text-3xl text-center mr-16">
+            WORLD BEST BRAND
+            <br />
+            WINNER 2020
+          </p>
+          <p className="text-3xl">COFFEE JOURNEY</p>
+        </div>
+        <div data-aos="fade-up" className="grid grid-cols-3 gap-16 px-16 mt-5">
+          <p className="text-sm text-center">
+            Grab-and-go coffee chain Kopi Kenangan strengthens its commitment to
+            serve the best quality product and become the first Kopi Susu
+            Kekinian to obtain Halal Certification from Majelis Ulama Indonesia.
+          </p>
+          <p className="text-sm text-center">
+            Kopi Kenangan has been appointed as the only Brand of The Year
+            winner in the Café Chain category from Indonesia by The World
+            Branding Awards.
+          </p>
+          <p className="text-sm text-center">
+            At Kopi Kenangan, we make sure you have the best coffee experience.
+            We work relentlessly to guarantee we deliver on our promise. From
+            harvest, tasting, roasting, and working together with the producers
+            in Indonesia to produce the best crop for our customers.
+          </p>
         </div>
       </div>
-      <Footer className= "bg-abu2"/>;
+      <Footer className="bg-abu2" />;
     </div>
-    
   );
-  
-  
 };
 
 export default Home;

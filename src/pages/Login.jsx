@@ -3,29 +3,22 @@ import "aos/dist/aos.css"; // Impor CSS AOS
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
+
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import IconButton from "@mui/material/IconButton";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 import "animate.css";
 import logo from "../assets/Logo.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Untuk menyimpan pesan error
   const [loading, setLoading] = useState(false); // Untuk status loading
-  const navigate = useNavigate();
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     // Validasi sederhana sebelum login
@@ -48,9 +41,10 @@ const Login = () => {
         (user) => user.username === username && user.password === password
       );
 
+      // ========= VALIDASI AGAR BISA TERSIMPAN DI LOCAL STORAGE ==================
       if (user) {
         // Jika login berhasil, arahkan ke halaman home
-        localStorage.setItem("username",username)
+        localStorage.setItem("username", username);
         navigate("/"); // Arahkan ke halaman home
       } else {
         // Jika login gagal, tampilkan pesan error
@@ -124,21 +118,9 @@ const Login = () => {
               </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                // endAdornment={
-                //   <InputAdornment position="end">
-                //     <IconButton
-                //       aria-label="toggle password visibility"
-                //       onClick={handleClickShowPassword}
-                //       onMouseDown={handleMouseDownPassword}
-                //       edge="end"
-                //     >
-                //       {showPassword ? <VisibilityOff /> : <Visibility />}
-                //     </IconButton>
-                //   </InputAdornment>
-                // }
                 label="Password"
               />
             </FormControl>
