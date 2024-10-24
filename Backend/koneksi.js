@@ -12,7 +12,8 @@ app.use(express.json()); // Parsing request body sebagai JSON
 
 // Middleware untuk menyajikan gambar dari disk
 // app.use("/assets", express.static("E:\Backend\Kopken\kopken\src\assets"));
-app.use("/assets", express.static("E:/Backend/Kopken/kopken/src/assets"));  // Atur untuk menyajikan gambar dari folder D:/images
+app.use("/assets", express.static("F:/Backend/Kopken/kopken/src/assets"));
+// Atur untuk menyajikan gambar dari folder D:/images
 
 const port = process.env.PORT;
 const url = process.env.MONGODB;
