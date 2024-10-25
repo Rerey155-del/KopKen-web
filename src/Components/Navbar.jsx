@@ -72,7 +72,7 @@ const Navbar = () => {
               onClick={pindahHalaman}
             >
               Product
-            </a>
+            </a>cd 
           </li>
           <li>
             <a

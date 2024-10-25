@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import keranjang from "../assets/shopping_cart.svg";
 import AOS from "aos";
+import Footer from "../Components/Footer";
 
 const Menu = () => {
 
@@ -66,6 +67,7 @@ const Menu = () => {
           ))}
         </div>
       </div>
+      <Footer className="bg-abu2" />;
     </div>
   );
 };
