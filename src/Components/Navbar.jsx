@@ -89,7 +89,7 @@ const Navbar = () => {
               className="text-300 font-bold"
               style={{ color: "#2D2D2D" }}
             >
-              Mobile Apps
+              Keranjang
             </a>
           </li>
         </ul>
