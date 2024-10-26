@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Menu from "./pages/Menu.jsx"
+import Keranjang from "./pages/Keranjang.jsx"
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
         {/* Route ke halaman Login */}
         <Route path="/login" element={<Login />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/cart" element={<Keranjang />} />
+        
 
       </Routes>
     </Router>
