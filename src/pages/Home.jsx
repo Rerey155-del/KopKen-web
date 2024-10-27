@@ -34,6 +34,8 @@ const Home = () => {
     navigate("/menu");
   };
 
+  
+
   useEffect(() => {
     AOS.init({
       duration: 2000,

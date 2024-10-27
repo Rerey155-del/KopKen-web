@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import Add from "../assets/plus.png"
+import Remove from "../assets/remove.png"
+import Delete from "../assets/delete.png"
 
 const Keranjang = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -40,33 +43,33 @@ const Keranjang = () => {
     <div className="bg-[#ECD6BD] min-h-screen text-white">
       <div className="grid p-16 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
         {cartItems.map((item, index) => ( // Dapatkan index saat memetakan item
-          <div key={item.id} className="card bg-base-100 w-100 shadow-xl bg-merah">
+          <div key={item.id} className="card bg-base-100 w-45 shadow-xl bg-merah">
             <figure>
               <img src={item.gambar} alt={item.nama} />
             </figure>
             <div className="card-body text-center items-center">
               <h2 className="card-title">{item.nama}</h2>
               <p className="text-sm">{item.harga}</p>
-              <p className="text-sm">Jumlah: {item.quantity}</p>
+              <p className="text-sm">Jumlah : {item.quantity}</p>
               <div className="flex gap-2 mt-2">
                 <button
-                  className="btn btn-primary"
+                  className="btn rounded-full"
                   onClick={() => handleQuantityChange(index, "increase")} // Ganti item.id dengan index
                 >
-                  Tambah
+                  <img src={Add} className="size-5" alt="" />
                 </button>
                 <button
-                  className="btn btn-secondary"
+                  className="btn rounded-full"
                   onClick={() => handleQuantityChange(index, "decrease")} // Ganti item.id dengan index
                   disabled={item.quantity <= 1}
                 >
-                  Kurang
+                  <img src={Remove} className="size-5" alt="" />
                 </button>
                 <button
-                  className="btn btn-danger"
+                  className="btn rounded-full"
                   onClick={() => handleRemoveItem(index)} // Hapus berdasarkan index
                 >
-                  Hapus
+                  <img src={Delete} className="size-5" alt="" />
                 </button>
               </div>
             </div>
