@@ -21,7 +21,7 @@ const Keranjang = () => {
     );
   }, []);
 
-  // Hitung subtotal dan total setiap kali cartItems berubah
+  // Hitung subtotal dan total setiap kali cartItems beruuubah
   useEffect(() => {
     const newSubtotal = cartItems.reduce(
       (acc, item) => acc + item.harga * item.quantity,
