@@ -122,7 +122,6 @@ const Navbar = () => {
         ) : (
           <div>
             <a
-              href="#"
               className="text-300 font-bold"
               style={{ color: "#2D2D2D" }}
               onClick={Login}
