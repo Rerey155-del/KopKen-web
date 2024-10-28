@@ -76,7 +76,7 @@ const Navbar = () => {
               onClick={pindahHalaman}
             >
               Product
-            </a>cd 
+            </a>
           </li>
           <li>
             <a
