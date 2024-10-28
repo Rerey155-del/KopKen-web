@@ -4,8 +4,8 @@ import "../styles/home.css";
 import GroupImage from "../assets/Group 4.svg";
 import Button from "@mui/material/Button";
 import "flowbite";
-import matchaExpresso from "../assets/matchaexpresso.svg"; // Pastikan path sesuai
-import matchaLatte from "../assets/matchalatte.svg"; // Pastikan path sesuai
+import matchaExpresso from "../assets/matchaexpresso.svg";
+import matchaLatte from "../assets/matchalatte.svg";
 import outside from "../assets/outside.svg";
 import panahKiri from "../assets/panahkiri.png";
 import panahKanan from "../assets/panahkanan.png";
@@ -17,7 +17,7 @@ import halal from "../assets/HALAL.png";
 import mui from "../assets/MUI.png";
 import ESPRESSO from "../assets/ESPRESSO.png";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Impor CSS AOS
+import "aos/dist/aos.css";
 import Footer from "../Components/Footer";
 import ArrowForward from "../assets/arrow_forward.svg";
 import { useNavigate } from "react-router-dom";
@@ -33,8 +33,6 @@ const Home = () => {
   const pindahHalaman = () => {
     navigate("/menu");
   };
-
-  
 
   useEffect(() => {
     AOS.init({
@@ -53,11 +51,14 @@ const Home = () => {
         boxSizing: "border-box",
         overflowX: "hidden",
         fontFamily: "Josefin Sans, sans-serif",
+        display: "flex",
+        flexDirection: "column",
       }}
       className="overflow-y-auto text-black"
     >
       <Navbar />
-      <div className="px-20 mt-28">
+      <main className="flex-grow">
+        <div className="px-20 mt-28">
         <div style={{ fontFamily: "Josefin Sans, sans-serif" }}>
           <div className="flex gap-6">
             <div data-aos="zoom-fade-up">
@@ -153,8 +154,8 @@ const Home = () => {
             </Button>
           </div>
         </div>
-        {/* bar progress */}
-        <div data-aos="zoom-fade-up" className="flex justify-end mt-10">
+         {/* bar progress */}
+         <div data-aos="zoom-fade-up" className="flex justify-end mt-10">
           <div className="gap-6  mr-9">
             <div>
               <span class="text-base font-medium ">Caffeine</span>
@@ -204,8 +205,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
-      {/* ========== CAROUSEL ============= */}
+        </div>
+        
+       {/* ========== CAROUSEL ============= */}
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
@@ -471,13 +473,14 @@ const Home = () => {
           </button>
         </div>
       </div>
-      {/* ====== MAIN SECTION =========== */}
-      <div
-        data-aos="fade-up"
-        className="flex justify-around h-screen px-10"
-        style={{ marginTop: "5rem" }}
-      >
-        <p data-aos="fade-up" className="mt-40 " style={{ fontSize: "30px" }}>
+
+        {/* Main section - removed h-screen */}
+        <div
+          data-aos="fade-up"
+          className="flex justify-around px-10"
+          style={{ marginTop: "5rem" }}
+        >
+          <p data-aos="fade-up" className="mt-40 " style={{ fontSize: "30px" }}>
           {" "}
           <span className="text-merah">Kopi Kenangan</span> stands for Coffee
           Memories.
@@ -505,48 +508,53 @@ const Home = () => {
           </div>
         </p>
 
-        <img
-          data-aos="zoom-in"
-          src={founder}
-          className="mt-24 justify-end"
-          style={{ height: "30rem" }}
-        />
-      </div>
-      <div className="mb-20">
-        <div data-aos="fade-up" className="flex justify-center">
-          <img src={halal}></img>
-          <img src={mui}></img>
-          <img src={ESPRESSO}></img>
+          <img
+            data-aos="zoom-in"
+            src={founder}
+            className="mt-24 justify-end"
+            style={{ height: "30rem" }}
+          />
+
         </div>
-        <div data-aos="fade-up" className="flex justify-around w-full px-10">
-          <p className="text-3xl ">HALAL CERTIFICATION</p>
-          <p className="text-3xl text-center mr-16">
-            WORLD BEST BRAND
-            <br />
-            WINNER 2020
-          </p>
-          <p className="text-3xl">COFFEE JOURNEY</p>
+
+        {/* Certification section - adjusted margins */}
+        <div className="mt-20 mb-10">
+          <div data-aos="fade-up" className="flex justify-center">
+            <img src={halal} alt="halal" />
+            <img src={mui} alt="mui" />
+            <img src={ESPRESSO} alt="espresso" />
+          </div>
+          <div data-aos="fade-up" className="flex justify-around w-full px-10">
+            <p className="text-3xl">HALAL CERTIFICATION</p>
+            <p className="text-3xl text-center mr-16">
+              WORLD BEST BRAND
+              <br />
+              WINNER 2020
+            </p>
+            <p className="text-3xl">COFFEE JOURNEY</p>
+          </div>
+          <div data-aos="fade-up" className="grid grid-cols-3 gap-16 px-16 mt-5">
+            <p className="text-sm text-center">
+              Grab-and-go coffee chain Kopi Kenangan strengthens its commitment to
+              serve the best quality product and become the first Kopi Susu
+              Kekinian to obtain Halal Certification from Majelis Ulama Indonesia.
+            </p>
+            <p className="text-sm text-center">
+              Kopi Kenangan has been appointed as the only Brand of The Year
+              winner in the Café Chain category from Indonesia by The World
+              Branding Awards.
+            </p>
+            <p className="text-sm text-center">
+              At Kopi Kenangan, we make sure you have the best coffee experience.
+              We work relentlessly to guarantee we deliver on our promise. From
+              harvest, tasting, roasting, and working together with the producers
+              in Indonesia to produce the best crop for our customers.
+            </p>
+          </div>
         </div>
-        <div data-aos="fade-up" className="grid grid-cols-3 gap-16 px-16 mt-5">
-          <p className="text-sm text-center">
-            Grab-and-go coffee chain Kopi Kenangan strengthens its commitment to
-            serve the best quality product and become the first Kopi Susu
-            Kekinian to obtain Halal Certification from Majelis Ulama Indonesia.
-          </p>
-          <p className="text-sm text-center">
-            Kopi Kenangan has been appointed as the only Brand of The Year
-            winner in the Café Chain category from Indonesia by The World
-            Branding Awards.
-          </p>
-          <p className="text-sm text-center">
-            At Kopi Kenangan, we make sure you have the best coffee experience.
-            We work relentlessly to guarantee we deliver on our promise. From
-            harvest, tasting, roasting, and working together with the producers
-            in Indonesia to produce the best crop for our customers.
-          </p>
-        </div>
-      </div>
-      <Footer className="bg-abu2" />;
+      </main>
+      
+      <Footer className="mt-auto bg-abu2" />
     </div>
   );
 };
