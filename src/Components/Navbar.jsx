@@ -17,6 +17,10 @@ const Navbar = () => {
     navigate("/cart");
   };
 
+  const Login = () => {
+    navigate("/login")
+  }
+
   // Mengambil username dari localStorage jika sudah login (saat komponen pertama kali di-mount)
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -118,9 +122,9 @@ const Navbar = () => {
         ) : (
           <div>
             <a
-              href="/login"
               className="text-300 font-bold"
               style={{ color: "#2D2D2D" }}
+              onClick={Login}
             >
               Login
             </a>
