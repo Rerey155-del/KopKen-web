@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "koneksi.js",
+        "src": "Server/koneksi.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/koneksi.js"
+        "dest": "Server/koneksi.js"
       }
     ]
   }
