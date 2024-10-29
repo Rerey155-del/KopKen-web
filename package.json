@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"nodemon Server/koneksi.js\"",
     "server": "nodemon Server/koneksi.js",
-    "start": "node Server/koneksi.js",
+    "start": "vite preview",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
