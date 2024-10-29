@@ -68,7 +68,7 @@ app.get("/product", async (req, res) => {
 });
 
 // Endpoint POST untuk menambahkan data ke koleksi "user"
-app.post("/user", async (req, res) => {
+app.post("/api/user", async (req, res) => {
   try {
     const result = await userCollection.insertOne(req.body);
     res.json(result);
@@ -77,7 +77,7 @@ app.post("/user", async (req, res) => {
   }
 });
 
-app.get("/product", async (req, res) => {
+app.get("/api/product", async (req, res) => {
   try {
     const result = await productCollection.insertOne(req.body);
     res.json(result);

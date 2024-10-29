@@ -15,8 +15,11 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "Server/koneksi.js"
+    },
+    {
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
