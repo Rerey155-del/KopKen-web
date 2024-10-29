@@ -1,23 +1,15 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "Server/koneksi.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "src/main.jsx", 
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "Server/koneksi.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "src/main.jsx"
+      "dest": "Server/koneksi.js"
     }
   ]
 }
