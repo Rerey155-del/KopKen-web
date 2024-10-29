@@ -4,12 +4,15 @@
     {
       "src": "src/api/koneksi.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "src/api/koneksi.js"
-    }
+    { "src": "/api/(.*)", "dest": "src/api/koneksi.js" },
+    { "src": "/(.*)", "dest": "/" }
   ]
 }
