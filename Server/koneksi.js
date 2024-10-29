@@ -6,9 +6,13 @@ import cors from "cors";
 // LOAD ENVIRONMENT VARIABLES
 dotenv.config();
 
-const app = express();
-app.use(cors());
-app.use(express.json()); // Parsing request body sebagai JSON
+// Konfigurasi CORS untuk production dan development
+app.use(
+  cors({
+    origin: ["https://kopikenangan-tawny.vercel.app/", "http://localhost:2030"],
+    credentials: true,
+  })
+);
 
 // Middleware untuk menyajikan gambar dari disk
 
