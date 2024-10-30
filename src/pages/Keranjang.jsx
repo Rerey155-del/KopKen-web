@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Add from "../assets/plus.png";
 import Remove from "../assets/remove.png";
 import Delete from "../assets/delete.png";
+import Footer from "../Components/Footer";
 
 const Keranjang = () => {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
-  const fixedPrice = 50000; // Harga tetap untuk setiap item
+  // Harga tetap untuk setiap item
 
   // Load data keranjang dari localStorage saat pertama kali komponen dimuat
   useEffect(() => {
@@ -16,7 +17,6 @@ const Keranjang = () => {
       items.map((item) => ({
         ...item,
         quantity: item.quantity || 1,
-        harga: fixedPrice, // Set harga tetap
       }))
     );
   }, []);
@@ -79,7 +79,7 @@ const Keranjang = () => {
             </figure>
             <div className="card-body text-center items-center">
               <h2 className="card-title">{item.nama}</h2>
-              <p className="text-sm">Rp {item.harga.toLocaleString()}</p>
+              <p className="text-sm">Rp.{item.harga}</p>
               <p className="text-sm">Jumlah : {item.quantity}</p>
               <div className="flex gap-2 mt-2">
                 <button
@@ -117,6 +117,7 @@ const Keranjang = () => {
           </div>
         </div>
       </div>
+      <Footer className="mt-auto bg-abu2" />
     </div>
   );
 };

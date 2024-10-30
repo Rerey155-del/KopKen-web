@@ -82,7 +82,7 @@ const Menu = () => {
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{product.nama}</h2>
-                <p className="text-sm">{product.harga}</p>
+                <p className="text-sm">Rp. {product.harga}</p>
                 <div className="flex gap-4 justify-end mt-2">
                   <button className="btn btn-abu2 text-white">Beli</button>
                   <button
