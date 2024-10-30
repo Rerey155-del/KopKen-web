@@ -31,7 +31,7 @@ const Login = () => {
 
     try {
       // Kirim GET request dengan username dan password
-      const response = await axios.get("http://147.185.221.23:42266:2030/user", {
+      const response = await axios.get("http://localhost:2030/user", {
         username,
         password,
       });

@@ -22,7 +22,7 @@ const Menu = () => {
   // ================== DATA FETCHING =====================
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://147.185.221.23:42266:2030/product");
+      const response = await axios.get("http://localhost:2030/product");
       setProducts(response.data);
       setLoading(false);
     } catch (error) {
