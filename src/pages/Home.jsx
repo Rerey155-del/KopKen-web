@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import "../styles/home.css";
 import GroupImage from "../assets/Group 4.svg";
@@ -158,7 +158,7 @@ const Home = () => {
          <div data-aos="zoom-fade-up" className="flex justify-end mt-10">
           <div className="gap-6  mr-9">
             <div>
-              <span class="text-base font-medium ">Caffeine</span>
+              <span className="text-base font-medium ">Caffeine</span>
               <div
                 className="bg-gray-200 rounded-full dark:bg-gray-700 mb-6"
                 style={{ width: "15rem" }}
@@ -173,7 +173,7 @@ const Home = () => {
             </div>
 
             <div>
-              <span class="text-base font-medium ">Sugar</span>
+              <span className="text-base font-medium ">Sugar</span>
 
               <div
                 className="bg-gray-200 rounded-full dark:bg-gray-700 mb-6"
@@ -189,7 +189,7 @@ const Home = () => {
             </div>
 
             <div>
-              <span class="text-base font-medium ">Calories</span>
+              <span className="text-base font-medium ">Calories</span>
 
               <div
                 className="bg-gray-200 rounded-full dark:bg-gray-700"
