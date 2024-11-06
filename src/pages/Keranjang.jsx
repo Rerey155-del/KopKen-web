@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Add from "../assets/plus.png";
 import Remove from "../assets/remove.png";
 import Delete from "../assets/delete.png";
