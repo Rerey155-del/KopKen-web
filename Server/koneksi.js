@@ -12,13 +12,18 @@ app.use(express.json()); // Parsing request body sebagai JSON
 
 // Middleware untuk menyajikan gambar dari disk
 
-app.use("/assets", express.static("F:/Backend/Kopken/kopken/src/assets"));
+// app.use("/assets", express.static("F:/Backend/Kopken/kopken/src/assets"));
 // Atur untuk menyajikan gambar dari folder D:/images
 
+// eslint-disable-next-line no-undef
 const port = process.env.PORT;
+// eslint-disable-next-line no-undef
 const url = process.env.MONGODB;
+// eslint-disable-next-line no-undef
 const namaDatabase = process.env.kopken;
+// eslint-disable-next-line no-undef
 const namaKoleksiUser = process.env.user; // Koleksi untuk user
+// eslint-disable-next-line no-undef
 const namaKoleksiProduct = process.env.product; // Koleksi untuk product
 
 let client;
@@ -62,6 +67,7 @@ app.get("/product", async (req, res) => {
   try {
     const data = await productCollection.find().toArray(); // Gunakan koleksi "product"
     res.json(data);
+  // eslint-disable-next-line no-unused-vars
   } catch (error) {
     res.status(500).json({ message: "terjadi kesalahan" });
   }
@@ -72,6 +78,7 @@ app.post("/user", async (req, res) => {
   try {
     const result = await userCollection.insertOne(req.body);
     res.json(result);
+  // eslint-disable-next-line no-unused-vars
   } catch (error) {
     res.status(500).json({ message: "terjadi kesalahan" });
   }
@@ -81,6 +88,7 @@ app.get("/product", async (req, res) => {
   try {
     const result = await productCollection.insertOne(req.body);
     res.json(result);
+  // eslint-disable-next-line no-unused-vars
   } catch (error) {
     res.status(500).json({ message: "terjadi kesalahan" });
   }
